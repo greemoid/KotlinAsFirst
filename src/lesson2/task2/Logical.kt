@@ -3,6 +3,8 @@
 package lesson2.task2
 
 import lesson1.task1.sqr
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 /**
  * Пример
@@ -18,7 +20,13 @@ fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
  * Четырехзначное число назовем счастливым, если сумма первых двух ее цифр равна сумме двух последних.
  * Определить, счастливое ли заданное число, вернуть true, если это так.
  */
-fun isNumberHappy(number: Int): Boolean = TODO()
+fun isNumberHappy(number: Int): Boolean {
+    val first = number / 1000
+    val second = number % 1000 / 100
+    val third = number % 100 / 10
+    val fourth = number % 10
+    return (first + second) == (third + fourth)
+}
 
 /**
  * Простая (2 балла)
@@ -36,7 +44,32 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
-fun daysInMonth(month: Int, year: Int): Int = TODO()
+fun daysInMonth(month: Int, year: Int): Int {
+    when (month) {
+        1 -> return 31
+        3 -> return 31
+        4 -> return 30
+        5 -> return 31
+        6 -> return 30
+        7 -> return 31
+        8 -> return 31
+        9 -> return 30
+        10 -> return 31
+        11 -> return 30
+        12 -> return 31
+        else -> {
+            if (month == 2) {
+                if ((year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 == 0)) {
+                    return 29
+                }else {
+                    return 28
+                }
+            } else return 28
+        }
+    }
+
+
+}
 
 /**
  * Простая (2 балла)
@@ -48,7 +81,8 @@ fun daysInMonth(month: Int, year: Int): Int = TODO()
 fun circleInside(
     x1: Double, y1: Double, r1: Double,
     x2: Double, y2: Double, r2: Double
-): Boolean = TODO()
+): Boolean = ((sqrt((x2 - x1).pow(2) + (y2 - y1).pow(2))) == (r2 - r1)) ||
+(sqrt((x2 - x1).pow(2) + (y2 - y1).pow(2)) < (r2 - r1))
 
 /**
  * Средняя (3 балла)

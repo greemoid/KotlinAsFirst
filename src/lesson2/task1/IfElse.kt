@@ -68,7 +68,17 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    when(age) {
+        1, 21, 31, 41, 51, 61, 71, 81, 91, 101, 121, 131, 141, 151, 161, 171, 181, 191 -> return "$age год"
+        in 2..4, in 22..24, in 32..34, in 42..44, in 52..54, in 62..64, in 72..74, in 82..84,
+        in 92..94, in 102..104, in 122..124, in 132..134, in 142..144, in 152..154,
+        in 162..164, in 172..174, in 182..184, in 192..194 -> return "$age года"
+        in 5..20, in 115..120 -> return "$age лет"
+        20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 120, 130, 140, 150, 160, 170, 180, 190, 199 -> return "$age лет"
+        else -> return "NaN"
+    }
+}
 
 /**
  * Простая (2 балла)
@@ -81,7 +91,20 @@ fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double = TODO()
+): Double {
+    val s1 = t1 * v1
+    val s2 = t2 * v2
+    val s3 = t3 * v3
+    val polS = (s1 + s2 + s3) / 2
+    if (polS <= s1) {
+        return polS / t1
+    } else if (polS > s1 && polS <= s1 + s2) {
+        return t1 + (polS - s1)/v2
+    } else {
+        return (polS - s1 - s2) / t3
+    }
+}
+
 
 /**
  * Простая (2 балла)
@@ -122,7 +145,37 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    /*if (a + b > c && b + c > a && c + a > b) {
+        if(c > a && c > b) {
+            if (c * c == ((a * a) + (b * b))) return 1
+            else if (c * c < ((a * a) + (b * b))) return 0
+            else if (c * c > ((a * a) + (b * b))) return 2
+            else return -1
+            }
+        else if (a > b && a > c) {
+            if (a * a == ((c * c) + (b * b))) return 1
+            else if (a * a < ((c * c) + (b * b))) return 0
+            else if (a * a > ((c * c) + (b * b))) return 2
+            else return -1
+            }
+        else if (b > a && b > c) {
+            if (b * b == ((a * a) + (c * c))) return 1
+            else if (b * b < ((a * a) + (c * c))) return 0
+            else if (b * b > ((a * a) + (c * c))) return 2
+            else return -1
+             }
+        }
+    else if (a == b == c) {
+        return 1
+    }
+    else {
+        return -1
+    }
+
+     */
+    TODO()
+}
 
 /**
  * Средняя (3 балла)
